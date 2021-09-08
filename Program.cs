@@ -66,16 +66,15 @@ namespace HeistTeamFour
                 {
                     try
                     {
-                         teamMemberSkillLevel = int.Parse(Console.ReadLine());
-                         if (teamMemberSkillLevel < 1 || teamMemberSkillLevel > 100)
-                         {
-                             Console.WriteLine("You must enter a value between 1 and 100:");
-                             teamMemberSkillLevel = 0;
-                         }
+                        teamMemberSkillLevel = int.Parse(Console.ReadLine());
+                        if (teamMemberSkillLevel < 1 || teamMemberSkillLevel > 100)
+                        {
+                            Console.WriteLine("You must enter a value between 1 and 100:");
+                            teamMemberSkillLevel = 0;
+                        }
                     }
                     catch (FormatException)
-                    {
-                        
+                    {   
                         Console.WriteLine("You must enter a value between 1 and 100:");
                     }
                 }
@@ -86,16 +85,15 @@ namespace HeistTeamFour
                 {
                     try
                     {
-                         teamMemberPercentage = int.Parse(Console.ReadLine());
-                         if (teamMemberPercentage < 1 || teamMemberPercentage > 100)
-                         {
-                             Console.WriteLine("You must enter a value between 1 and 100:");
-                             teamMemberPercentage = 0;
-                         }
+                        teamMemberPercentage = int.Parse(Console.ReadLine());
+                        if (teamMemberPercentage < 1 || teamMemberPercentage > 100)
+                        {
+                            Console.WriteLine("You must enter a value between 1 and 100:");
+                            teamMemberPercentage = 0;
+                        }
                     }
                     catch (FormatException)
                     {
-                        
                         Console.WriteLine("You must enter a value between 1 and 100:");
                     }
                 }
