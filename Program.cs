@@ -41,47 +41,90 @@ namespace HeistTeamFour
                 }
             };
             Console.WriteLine($"Rolodex Total: {rolodex.Count}");
-            Console.WriteLine("Enter a new crew member's name:");
-            var teamMemberName = Console.ReadLine();
-            Console.WriteLine($"Select a specialty for {teamMemberName}:");
-            Console.WriteLine("1. Hacker (Disables alarms)");
-            Console.WriteLine("2. Muscle (Disarms guards)");
-            Console.WriteLine("3. Lock Specialist (cracks vault)");
-
-            int teamMemberSpecialty = int.Parse(Console.ReadLine());
-            while(teamMemberSpecialty != 1 && teamMemberSpecialty != 2 && teamMemberSpecialty != 3)
+            while(true)
             {
-                Console.WriteLine("You must enter a selection between 1 - 3");
-                teamMemberSpecialty = int.Parse(Console.ReadLine());
-            }
-            Console.WriteLine($"Enter {teamMemberName}'s Skill Level between 1 - 100");
-            int teamMemberSkillLevel = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter a new crew member's name:");
+                string teamMemberName = Console.ReadLine();
+                if (teamMemberName == "")
+                {
+                    break;
+                }
+                Console.WriteLine($"Select a specialty for {teamMemberName}:");
+                Console.WriteLine("1. Hacker (Disables alarms)");
+                Console.WriteLine("2. Muscle (Disarms guards)");
+                Console.WriteLine("3. Lock Specialist (cracks vault)");
 
-            Console.WriteLine("Please choose a percentage of the take");
-            int teamMemberPercentage = int.Parse(Console.ReadLine());
+                int teamMemberSpecialty = int.Parse(Console.ReadLine());
+                while(teamMemberSpecialty != 1 && teamMemberSpecialty != 2 && teamMemberSpecialty != 3)
+                {
+                    Console.WriteLine("You must enter a selection between 1 - 3");
+                    teamMemberSpecialty = int.Parse(Console.ReadLine());
+                }
+                Console.WriteLine($"Enter {teamMemberName}'s Skill Level between 1 - 100");
+                int teamMemberSkillLevel = 0;
+                while(teamMemberSkillLevel == 0)
+                {
+                    try
+                    {
+                         teamMemberSkillLevel = int.Parse(Console.ReadLine());
+                         if (teamMemberSkillLevel < 1 || teamMemberSkillLevel > 100)
+                         {
+                             Console.WriteLine("You must enter a value between 1 and 100:");
+                             teamMemberSkillLevel = 0;
+                         }
+                    }
+                    catch (FormatException)
+                    {
+                        
+                        Console.WriteLine("You must enter a value between 1 and 100:");
+                    }
+                }
 
-            IRobber newTeamMember = CreateTeamMember(teamMemberSpecialty);
-            rolodex.Add(newTeamMember);
-            IRobber CreateTeamMember(int classChoice)
-            {
+                Console.WriteLine("Please choose a percentage of the take");
+                int teamMemberPercentage = 0;
+                while(teamMemberPercentage == 0)
+                {
+                    try
+                    {
+                         teamMemberPercentage = int.Parse(Console.ReadLine());
+                         if (teamMemberPercentage < 1 || teamMemberPercentage > 100)
+                         {
+                             Console.WriteLine("You must enter a value between 1 and 100:");
+                             teamMemberPercentage = 0;
+                         }
+                    }
+                    catch (FormatException)
+                    {
+                        
+                        Console.WriteLine("You must enter a value between 1 and 100:");
+                    }
+                }
+
+                IRobber newTeamMember = CreateTeamMember(teamMemberSpecialty);
+                rolodex.Add(newTeamMember);
                 
-                if (classChoice == 1)
+                
+                IRobber CreateTeamMember(int classChoice)
                 {
-                    Hacker teamMember = new Hacker() 
-                    {Name = teamMemberName, SkillLevel = teamMemberSkillLevel, PercentageCut = teamMemberPercentage};
-                    return teamMember;
-                }
-                if (classChoice == 2)
-                {
-                    Muscle teamMember = new Muscle() 
-                    {Name = teamMemberName, SkillLevel = teamMemberSkillLevel, PercentageCut = teamMemberPercentage};
-                    return teamMember;
-                }
-                else
-                {
-                    LockSpecialist teamMember = new LockSpecialist() 
-                    {Name = teamMemberName, SkillLevel = teamMemberSkillLevel, PercentageCut = teamMemberPercentage};
-                    return teamMember;
+                    
+                    if (classChoice == 1)
+                    {
+                        Hacker teamMember = new Hacker() 
+                        {Name = teamMemberName, SkillLevel = teamMemberSkillLevel, PercentageCut = teamMemberPercentage};
+                        return teamMember;
+                    }
+                    if (classChoice == 2)
+                    {
+                        Muscle teamMember = new Muscle() 
+                        {Name = teamMemberName, SkillLevel = teamMemberSkillLevel, PercentageCut = teamMemberPercentage};
+                        return teamMember;
+                    }
+                    else
+                    {
+                        LockSpecialist teamMember = new LockSpecialist() 
+                        {Name = teamMemberName, SkillLevel = teamMemberSkillLevel, PercentageCut = teamMemberPercentage};
+                        return teamMember;
+                    }
                 }
             }
         }
