@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HeistTeamFour
 {
@@ -125,6 +126,59 @@ namespace HeistTeamFour
                     }
                 }
             }
+            Random random = new Random();
+            Bank BankofAmerica = new Bank() 
+            {AlarmScore = random.Next(0, 101), 
+            VaultScore = random.Next(0, 101), 
+            SecurityGuardScore = random.Next(0, 101), 
+            CashOnHand = random.Next(50000, 1000000)
+            };
+            Console.WriteLine($"AlarmScore for new Bank: {BankofAmerica.AlarmScore}");
+            Console.WriteLine($"VaultScore for new Bank: {BankofAmerica.VaultScore}");
+            Console.WriteLine($"SecurityGuardScore for new Bank: {BankofAmerica.SecurityGuardScore}");
+            Console.WriteLine($"CashOnHand for new Bank: {BankofAmerica.CashOnHand}");
+            ReconReport(BankofAmerica);
+
+            void ReconReport(Bank bank)
+            {
+                
+                List<int> bankProperties = new List<int>
+                {
+                    bank.AlarmScore,
+                    bank.VaultScore,
+                    bank.SecurityGuardScore
+                };
+
+                if(bankProperties.Max() == bank.AlarmScore)
+                {
+                    Console.WriteLine("The AlarmScore is the most secure!");
+                }
+                else if (bankProperties.Max() == bank.VaultScore)
+                {
+                    Console.WriteLine("The VaultScore is the most secure!");
+                }
+                else 
+                {
+                    Console.WriteLine("The SecurityGuardScore is the most secure!");
+                }
+
+                
+                if(bankProperties.Min() == bank.AlarmScore)
+                {
+                    Console.WriteLine("The AlarmScore is the least secure!");
+                }
+                else if (bankProperties.Min() == bank.VaultScore)
+                {
+                    Console.WriteLine("The VaultScore is the least secure!");
+                }
+                else 
+                {
+                    Console.WriteLine("The SecurityGuardScore is the least secure!");
+                }
+
+            }
+
+
         }
     }
 }

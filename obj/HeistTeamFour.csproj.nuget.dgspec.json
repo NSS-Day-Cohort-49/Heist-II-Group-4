@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kille\\workspace\\csharp\\HeistTeamFour\\HeistTeamFour.csproj": {}
+    "C:\\Users\\ianjm\\workspace\\C#NSS\\Book1\\Heist-II-Group-4\\HeistTeamFour.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kille\\workspace\\csharp\\HeistTeamFour\\HeistTeamFour.csproj": {
+    "C:\\Users\\ianjm\\workspace\\C#NSS\\Book1\\Heist-II-Group-4\\HeistTeamFour.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kille\\workspace\\csharp\\HeistTeamFour\\HeistTeamFour.csproj",
+        "projectUniqueName": "C:\\Users\\ianjm\\workspace\\C#NSS\\Book1\\Heist-II-Group-4\\HeistTeamFour.csproj",
         "projectName": "HeistTeamFour",
-        "projectPath": "C:\\Users\\kille\\workspace\\csharp\\HeistTeamFour\\HeistTeamFour.csproj",
-        "packagesPath": "C:\\Users\\kille\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kille\\workspace\\csharp\\HeistTeamFour\\obj\\",
+        "projectPath": "C:\\Users\\ianjm\\workspace\\C#NSS\\Book1\\Heist-II-Group-4\\HeistTeamFour.csproj",
+        "packagesPath": "C:\\Users\\ianjm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ianjm\\workspace\\C#NSS\\Book1\\Heist-II-Group-4\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kille\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ianjm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
