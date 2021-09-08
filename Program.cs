@@ -47,26 +47,43 @@ namespace HeistTeamFour
             Console.WriteLine("1. Hacker (Disables alarms)");
             Console.WriteLine("2. Muscle (Disarms guards)");
             Console.WriteLine("3. Lock Specialist (cracks vault)");
-            var teamMemberSpecialty = Console.ReadLine();
-            var newTeamMember;
-            
-            switch (int.Parse(teamMemberSpecialty))
+
+            int teamMemberSpecialty = int.Parse(Console.ReadLine());
+            while(teamMemberSpecialty != 1 && teamMemberSpecialty != 2 && teamMemberSpecialty != 3)
             {
-                case 1: 
-                    newTeamMember = new Hacker() {Name = $"{teamMemberName}"};
-                    break;
-                case 2: 
-                    newTeamMember = new Muscle() {Name = $"{teamMemberName}"};
-                    break;
-                case 3: 
-                    newTeamMember = new LockSpecialist() {Name = $"{teamMemberName}"};
-                    break;
-                default: 
-                    Console.WriteLine("Please enter a number between 1 and 3!");
-                    break;
+                Console.WriteLine("You must enter a selection between 1 - 3");
+                teamMemberSpecialty = int.Parse(Console.ReadLine());
             }
-            Console.WriteLine($"{newTeamMember.Name}");
-            // Console.WriteLine($"Select a  for {teamMemberName}:");
+            Console.WriteLine($"Enter {teamMemberName}'s Skill Level between 1 - 100");
+            int teamMemberSkillLevel = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Please choose a percentage of the take");
+            int teamMemberPercentage = int.Parse(Console.ReadLine());
+
+            IRobber newTeamMember = CreateTeamMember(teamMemberSpecialty);
+            rolodex.Add(newTeamMember);
+            IRobber CreateTeamMember(int classChoice)
+            {
+                
+                if (classChoice == 1)
+                {
+                    Hacker teamMember = new Hacker() 
+                    {Name = teamMemberName, SkillLevel = teamMemberSkillLevel, PercentageCut = teamMemberPercentage};
+                    return teamMember;
+                }
+                if (classChoice == 2)
+                {
+                    Muscle teamMember = new Muscle() 
+                    {Name = teamMemberName, SkillLevel = teamMemberSkillLevel, PercentageCut = teamMemberPercentage};
+                    return teamMember;
+                }
+                else
+                {
+                    LockSpecialist teamMember = new LockSpecialist() 
+                    {Name = teamMemberName, SkillLevel = teamMemberSkillLevel, PercentageCut = teamMemberPercentage};
+                    return teamMember;
+                }
+            }
         }
     }
 }
