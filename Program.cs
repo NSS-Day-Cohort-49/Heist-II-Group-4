@@ -127,17 +127,15 @@ namespace HeistTeamFour
                 }
             }
             Random random = new Random();
-            Bank BankofAmerica = new Bank() 
-            {AlarmScore = random.Next(0, 101), 
-            VaultScore = random.Next(0, 101), 
-            SecurityGuardScore = random.Next(0, 101), 
-            CashOnHand = random.Next(50000, 1000000)
+            Bank BankOfAmerica = new Bank() 
+            {
+                AlarmScore = random.Next(0, 101), 
+                VaultScore = random.Next(0, 101), 
+                SecurityGuardScore = random.Next(0, 101), 
+                CashOnHand = random.Next(50000, 1000000)
             };
-            Console.WriteLine($"AlarmScore for new Bank: {BankofAmerica.AlarmScore}");
-            Console.WriteLine($"VaultScore for new Bank: {BankofAmerica.VaultScore}");
-            Console.WriteLine($"SecurityGuardScore for new Bank: {BankofAmerica.SecurityGuardScore}");
-            Console.WriteLine($"CashOnHand for new Bank: {BankofAmerica.CashOnHand}");
-            ReconReport(BankofAmerica);
+            
+            ReconReport(BankOfAmerica);
 
             void ReconReport(Bank bank)
             {
@@ -151,34 +149,47 @@ namespace HeistTeamFour
 
                 if(bankProperties.Max() == bank.AlarmScore)
                 {
-                    Console.WriteLine("The AlarmScore is the most secure!");
+                    Console.WriteLine("The Alarm is the most secure!");
                 }
-                else if (bankProperties.Max() == bank.VaultScore)
+                else if(bankProperties.Max() == bank.VaultScore)
                 {
-                    Console.WriteLine("The VaultScore is the most secure!");
+                    Console.WriteLine("The Vault is the most secure!");
                 }
                 else 
                 {
-                    Console.WriteLine("The SecurityGuardScore is the most secure!");
+                    Console.WriteLine("The SecurityGuard's are the most secure!");
                 }
 
-                
                 if(bankProperties.Min() == bank.AlarmScore)
                 {
-                    Console.WriteLine("The AlarmScore is the least secure!");
+                    Console.WriteLine("The Alarm is the least secure!");
                 }
                 else if (bankProperties.Min() == bank.VaultScore)
                 {
-                    Console.WriteLine("The VaultScore is the least secure!");
+                    Console.WriteLine("The Vault is the least secure!");
                 }
                 else 
                 {
-                    Console.WriteLine("The SecurityGuardScore is the least secure!");
+                    Console.WriteLine("The SecurityGuard's are the least secure!");
                 }
-
             }
+            List<IRobber> crew = new List<IRobber>();
+            foreach (IRobber teamMember in rolodex)
+            {
+                if(!crew.Contains(teamMember))
+                {
+                    Console.WriteLine($"Name: {teamMember.Name} SkillLevel: {teamMember.SkillLevel} Percentage Cut: {teamMember.PercentageCut}\n Specializes In: {teamMember.Specialty} Robber Index: {rolodex.IndexOf(teamMember)} \n");
+                }
+            }
+            
+            Console.WriteLine("Please choose the robbers for the heist.");
+            int crewSelection = int.Parse(Console.ReadLine());
+            crew.Add(rolodex[crewSelection]);
 
-
+            foreach (IRobber robber in crew)
+            {
+                Console.WriteLine($"{robber.Name}");
+            }
         }
     }
 }
