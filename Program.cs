@@ -40,6 +40,33 @@ namespace HeistTeamFour
                     PercentageCut = 18
                 }
             };
+            Console.WriteLine($"Rolodex Total: {rolodex.Count}");
+            Console.WriteLine("Enter a new crew member's name:");
+            var teamMemberName = Console.ReadLine();
+            Console.WriteLine($"Select a specialty for {teamMemberName}:");
+            Console.WriteLine("1. Hacker (Disables alarms)");
+            Console.WriteLine("2. Muscle (Disarms guards)");
+            Console.WriteLine("3. Lock Specialist (cracks vault)");
+            var teamMemberSpecialty = Console.ReadLine();
+            var newTeamMember;
+            
+            switch (int.Parse(teamMemberSpecialty))
+            {
+                case 1: 
+                    newTeamMember = new Hacker() {Name = $"{teamMemberName}"};
+                    break;
+                case 2: 
+                    newTeamMember = new Muscle() {Name = $"{teamMemberName}"};
+                    break;
+                case 3: 
+                    newTeamMember = new LockSpecialist() {Name = $"{teamMemberName}"};
+                    break;
+                default: 
+                    Console.WriteLine("Please enter a number between 1 and 3!");
+                    break;
+            }
+            Console.WriteLine($"{newTeamMember.Name}");
+            // Console.WriteLine($"Select a  for {teamMemberName}:");
         }
     }
 }
